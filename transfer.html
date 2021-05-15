@@ -13,159 +13,169 @@
     <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
 </head>
 
-<body>
-    <section id="main" class="transfer">
-        <a href="./index.html" class="btn-link"><i class="fa fa-chevron-left" aria-hidden="true"></i></a>
-        <div class="my-info text-center">
-            <button class="btn btn-primary" data-toggle="modal" data-target="#sendMoney">Send Money</button>
-            <button class="btn btn-primary" data-toggle="modal" data-target="#transactionHistory">See All Transactions</button>
-        </div>
+<body onload="myLoader()">
+    <div id="loader">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <div id="myDiv">
+        <section id="main" class="transfer">
+            <a href="./index.html" class="btn-link"><i class="fa fa-chevron-left" aria-hidden="true"></i></a>
+            <div class="my-info text-center">
+                <button class="btn btn-primary" data-toggle="modal" data-target="#sendMoney">Send Money</button>
+                <button class="btn btn-primary" data-toggle="modal" data-target="#transactionHistory">See All Transactions</button>
+            </div>
 
-        <!-- Modal send money -->
-        <div class="modal fade" id="sendMoney" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Send Money</h5>
-                        <button type="button" class="btn close" data-dismiss="modal" aria-label="Close">
-                            <i class="fa fa-times" aria-hidden="true"></i>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form action="">
-                            <div class="input-group mb-3">
-                                <input type="text" id="senderName" class="form-control" placeholder="Sender's username" aria-label="Sender's username" aria-describedby="basic-addon2">
-                                <div class="input-group-append">
-                                    <span class="input-group-text" id="basic-addon2">@email.com</span>
+            <!-- Modal send money -->
+            <div class="modal fade" id="sendMoney" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Send Money</h5>
+                            <button type="button" class="btn close" data-dismiss="modal" aria-label="Close">
+                                <i class="fa fa-times" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="">
+                                <div class="input-group mb-3">
+                                    <input type="text" id="senderName" class="form-control" placeholder="Sender's username" aria-label="Sender's username" aria-describedby="basic-addon2">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text" id="basic-addon2">@email.com</span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="input-group mb-3">
-                                <input type="text" id="name" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
-                                <div class="input-group-append">
-                                    <span class="input-group-text" id="basic-addon2">@email.com</span>
+                                <div class="input-group mb-3">
+                                    <input type="text" id="name" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text" id="basic-addon2">@email.com</span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">&#8377;</span>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">&#8377;</span>
+                                    </div>
+                                    <input type="text" id="amt" class="form-control" placeholder=" Enter Amount" aria-label="Amount">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text">.00</span>
+                                    </div>
                                 </div>
-                                <input type="text" id="amt" class="form-control" placeholder=" Enter Amount" aria-label="Amount">
-                                <div class="input-group-append">
-                                    <span class="input-group-text">.00</span>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" onclick="sendMoney()" class="btn btn-success" data-dismiss="modal">Send Money</button>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" onclick="sendMoney()" class="btn btn-success" data-dismiss="modal">Send Money</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Modal transaction History-->
-        <div class="modal fade" id="transactionHistory" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel"> History</h5>
-                        <button type="button" class="btn close" data-dismiss="modal" aria-label="Close">
-                            <i class="fa fa-times" aria-hidden="true"></i>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <ol id="transaction-history-body">
+            <!-- Modal transaction History-->
+            <div class="modal fade" id="transactionHistory" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel"> History</h5>
+                            <button type="button" class="btn close" data-dismiss="modal" aria-label="Close">
+                                <i class="fa fa-times" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <ol id="transaction-history-body">
 
-                        </ol>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            </ol>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- table  -->
-        <div class="container">
-            <div class="table-responsive">
-                <table>
-                    <tbody>
-                        <tr>
-                            <td><img src="./images/person-1.png" alt=""></td>
-                            <td class="desc"><strong>Samson Davidson</strong> <br> david@email.com</td>
-                            <td class="desc">
-                                <h3> &#8377; <span id="davidBankBalance">10000</span> </h3>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><img src="./images/person-2.png" alt=""></td>
-                            <td class="desc"> <strong>Kendrick Joseph</strong> <br> joseph@email.com </td>
-                            <td class="desc">
-                                <h3> &#8377; <span id="josephBankBalance">20000</span> </h3>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><img src="./images/person-3.png" alt=""></td>
-                            <td class="desc"> <strong>Melinda Snyder</strong> <br> melinda@email.com</td>
-                            <td class="desc">
-                                <h3> &#8377; <span id="melindaBankBalance">30000</span> </h3>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><img src="./images/person-4.png" alt=""></td>
-                            <td class="desc"> <strong>Kara Barker</strong> <br>kara@email.com</td>
-                            <td class="desc">
-                                <h3> &#8377; <span id="karaBankBalance">40000</span> </h3>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><img src="./images/person-5.png" alt=""></td>
-                            <td class="desc"> <strong>Trishna Kumar</strong> <br>trishna@email.com </td>
-                            <td class="desc">
-                                <h3> &#8377; <span id="trishnaBankBalance">50000</span> </h3>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><img src="./images/person-6.png" alt=""></td>
-                            <td class="desc"> <strong>Leonardo Pisani</strong> <br> leonardo@email.com </td>
-                            <td class="desc">
-                                <h3> &#8377; <span id="trishnaBankBalance">60000</span> </h3>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><img src="./images/person-7.png" alt=""></td>
-                            <td class="desc"> <strong>Ashutosh Yadav</strong> <br> ashutosh@email.com </td>
-                            <td class="desc">
-                                <h3> &#8377; <span id="ashutoshBankBalance">70000</span> </h3>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><img src="./images/person-8.png" alt=""></td>
-                            <td class="desc"> <strong>Bertram Peters</strong> <br> bertram@email.com </td>
-                            <td class="desc">
-                                <h3> &#8377; <span id="bertramBankBalance">80000</span> </h3>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><img src="./images/person-9.png" alt=""></td>
-                            <td class="desc"> <strong>Sebastian Malcom</strong> <br> sebastian@email.com</td>
-                            <td class="desc">
-                                <h3> &#8377; <span id="sebastainBankBalance">90000</span> </h3>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><img src="./images/person-10.png" alt=""></td>
-                            <td class="desc"><strong> Austin Yates </strong> <br> austin@email.com </td>
-                            <td class="desc">
-                                <h3> &#8377; <span id="austinBankBalance">100000</span></h3>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+            <!-- table  -->
+            <div class="container">
+                <div class="table-responsive">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td><img src="./images/person-1.png" alt=""></td>
+                                <td class="desc"><strong>Samson Davidson</strong> <br> david@email.com</td>
+                                <td class="desc">
+                                    <h3> &#8377; <span id="davidBankBalance">10000</span> </h3>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><img src="./images/person-2.png" alt=""></td>
+                                <td class="desc"> <strong>Kendrick Joseph</strong> <br> joseph@email.com </td>
+                                <td class="desc">
+                                    <h3> &#8377; <span id="josephBankBalance">20000</span> </h3>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><img src="./images/person-3.png" alt=""></td>
+                                <td class="desc"> <strong>Melinda Snyder</strong> <br> melinda@email.com</td>
+                                <td class="desc">
+                                    <h3> &#8377; <span id="melindaBankBalance">30000</span> </h3>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><img src="./images/person-4.png" alt=""></td>
+                                <td class="desc"> <strong>Kara Barker</strong> <br>kara@email.com</td>
+                                <td class="desc">
+                                    <h3> &#8377; <span id="karaBankBalance">40000</span> </h3>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><img src="./images/person-5.png" alt=""></td>
+                                <td class="desc"> <strong>Trishna Kumar</strong> <br>trishna@email.com </td>
+                                <td class="desc">
+                                    <h3> &#8377; <span id="trishnaBankBalance">50000</span> </h3>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><img src="./images/person-6.png" alt=""></td>
+                                <td class="desc"> <strong>Leonardo Pisani</strong> <br> leonardo@email.com </td>
+                                <td class="desc">
+                                    <h3> &#8377; <span id="trishnaBankBalance">60000</span> </h3>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><img src="./images/person-7.png" alt=""></td>
+                                <td class="desc"> <strong>Ashutosh Yadav</strong> <br> ashutosh@email.com </td>
+                                <td class="desc">
+                                    <h3> &#8377; <span id="ashutoshBankBalance">70000</span> </h3>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><img src="./images/person-8.png" alt=""></td>
+                                <td class="desc"> <strong>Bertram Peters</strong> <br> bertram@email.com </td>
+                                <td class="desc">
+                                    <h3> &#8377; <span id="bertramBankBalance">80000</span> </h3>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><img src="./images/person-9.png" alt=""></td>
+                                <td class="desc"> <strong>Sebastian Malcom</strong> <br> sebastian@email.com</td>
+                                <td class="desc">
+                                    <h3> &#8377; <span id="sebastainBankBalance">90000</span> </h3>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><img src="./images/person-10.png" alt=""></td>
+                                <td class="desc"><strong> Austin Yates </strong> <br> austin@email.com </td>
+                                <td class="desc">
+                                    <h3> &#8377; <span id="austinBankBalance">100000</span></h3>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+    </div>
 
     <script src="./main.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
